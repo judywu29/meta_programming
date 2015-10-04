@@ -2,20 +2,18 @@ Extend and define the attribute method
 ===========================================
 To define a single method 'attribute' which behaves much like the built-in 'attr', but whose properties require delving
 deep into the depths of meta-ruby. Usage of the 'attribute' method follows the general form of
-	    #   
-	    #   class C
-	    #     attribute 'a'
-	    #   end
-	    #   
-	    #   o = C::new
-	    #   o.a = 42  # setter - sets @a
-	    #   o.a       # getter - gets @a 
-	    #   o.a?      # query  - true if @a
-	    #   
- but reaches much farther than the standard 'attr' method
-	    #
-	    # 'attribute' must provide getter, setter, and query to instances
-	    #
+	       
+	       class C
+	         attribute 'a'
+	       end
+	       
+	       o = C::new
+	       o.a = 42  # setter - sets @a
+	       o.a       # getter - gets @a 
+	       o.a?      # query  - true if @a
+	       
+ but reaches much farther than the standard 'attr' method. 'attribute' must provide getter, setter, and query to instances
+	    
 	      def koan_1
 	        c = Class::new {
 	          attribute 'a'
@@ -30,7 +28,7 @@ deep into the depths of meta-ruby. Usage of the 'attribute' method follows the g
 	      end
       
 'attribute' must provide a method for providing a default value as hash
-	    #
+	    
 	      def koan_6
 	        c = Class::new {
 	          attribute 'a' => 42
@@ -43,10 +41,9 @@ deep into the depths of meta-ruby. Usage of the 'attribute' method follows the g
 	        assert{ (o.a = nil) == nil }
 	        assert{ not o.a? }
 	      end
-	    #
-	    # 'attribute' must provide a method for providing a default value as block
-	    # which is evaluated at instance level 
-	    #
+	   
+'attribute' must provide a method for providing a default value as block which is evaluated at instance level 
+	    
 	      def koan_7
 	        c = Class::new {
 	          attribute('a'){ fortytwo }
